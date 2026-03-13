@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <title>Birthday Surprise 🎉</title>
@@ -7,27 +8,71 @@
 <style>
 
 body{
-background:#d40000;
-color:white;
-text-align:center;
+margin:0;
 font-family:Arial;
+text-align:center;
+color:white;
+background:linear-gradient(#4facfe,#00f2fe);
+overflow:hidden;
+}
+
+h1{
+margin-top:80px;
+font-size:50px;
+}
+
+#tapbox{
+margin-top:40px;
+display:inline-block;
+padding:20px 40px;
+font-size:22px;
+background:white;
+color:#333;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+#tapbox:hover{
+transform:scale(1.1);
+}
+
+#surprise{
+display:none;
+margin-top:40px;
 }
 
 img{
-width:400px;
+width:350px;
 border-radius:15px;
-margin-top:30px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+animation:pop 0.8s ease;
 }
 
-button{
-margin-top:30px;
-padding:12px 25px;
-font-size:18px;
-border:none;
-border-radius:10px;
-background:white;
-color:#d40000;
-cursor:pointer;
+.message{
+font-size:24px;
+margin-top:20px;
+}
+
+@keyframes pop{
+0%{transform:scale(0)}
+100%{transform:scale(1)}
+}
+
+/* balloons */
+
+.balloon{
+position:fixed;
+bottom:-120px;
+width:60px;
+height:80px;
+border-radius:50%;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
 </style>
@@ -38,56 +83,55 @@ cursor:pointer;
 
 <h1>🎂 Happy Birthday 🎉</h1>
 
-<img id="slide" src="photo1.jpg">
+<div id="tapbox" onclick="showSurprise()">
+Tap Me 🎁
+</div>
 
-<p id="text">Today is your special day!</p>
+<div id="surprise">
 
-<button onclick="next()">Next Surprise 🎁</button>
+<img src="photo1.jpg">
+
+<div class="message">
+You are the best person I know ❤️ <br>
+Always be the same. <br>
+You are truly the best.
+</div>
+
+</div>
 
 <script>
 
-let images=[
-"photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg",
-"photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg",
-"photo9.jpg","photo10.jpg","photo11.jpg","photo12.jpg",
-"photo13.jpg","photo14.jpg","photo15.jpg","photo16.jpg"
-];
+function showSurprise(){
 
-let messages=[
-"Today is your special day 🎂",
-"Another year older 😄",
-"So many memories together 📸",
-"You are an amazing friend ❤️",
-"More adventures ahead 🚀",
-"Stay awesome always 🌟",
-"Friends make life brighter ✨",
-"Keep smiling 😊",
-"You deserve happiness 🌍",
-"Another birthday another memory 🎉",
-"Life is better with friends 💙",
-"More laughs to come 😂",
-"Never stop dreaming ⭐",
-"You are special 💫",
-"Almost the final surprise 🎁",
-"HAPPY BIRTHDAY 🎂"
-];
+document.getElementById("tapbox").style.display="none";
 
-let i=0;
-
-function next(){
-
-i++;
-
-if(i>=images.length){
-i=0;
-}
-
-document.getElementById("slide").src=images[i];
-document.getElementById("text").innerText=messages[i];
+document.getElementById("surprise").style.display="block";
 
 }
+
+/* balloons */
+
+function balloon(){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.background=
+"rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
+
+document.body.appendChild(b);
+
+setTimeout(()=>{b.remove()},10000);
+
+}
+
+setInterval(balloon,500);
 
 </script>
 
 </body>
+
 </html>

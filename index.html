@@ -9,7 +9,7 @@
 
 body{
 margin:0;
-background:#d40000;
+background:#c40000;
 font-family:Arial;
 color:white;
 text-align:center;
@@ -17,36 +17,60 @@ overflow:hidden;
 }
 
 .container{
-margin-top:60px;
+margin-top:50px;
 }
 
 h1{
-font-size:50px;
-margin-bottom:20px;
+font-size:45px;
 }
 
 img{
-width:400px;
+width:420px;
 border-radius:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.4);
-display:none;
+animation:drop 1s ease;
 }
 
 .message{
-font-size:22px;
+font-size:24px;
 margin-top:20px;
-display:none;
+animation:fade 2s;
+}
+
+button{
+margin-top:30px;
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:white;
+color:#c40000;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+@keyframes drop{
+0%{transform:translateY(-200px);opacity:0;}
+100%{transform:translateY(0);opacity:1;}
+}
+
+@keyframes fade{
+0%{opacity:0;}
+100%{opacity:1;}
 }
 
 /* balloons */
 
 .balloon{
 position:fixed;
-bottom:-150px;
+bottom:-120px;
 width:60px;
 height:80px;
 border-radius:50%;
-animation:float 8s linear infinite;
+animation:float 10s linear infinite;
 }
 
 @keyframes float{
@@ -68,6 +92,8 @@ animation:float 8s linear infinite;
 
 <div class="message" id="msg"></div>
 
+<button onclick="nextSlide()">Next Surprise 🎁</button>
+
 </div>
 
 <script>
@@ -80,60 +106,81 @@ let images=[
 ];
 
 let messages=[
-["Today is your special day 🎂","Hope it is full of joy","Let the celebration begin 🎉"],
 
-["Another year older 😄","Still the same crazy person","And we love that 😂"],
+["Today is YOUR day 🎂",
+"Hope it is filled with joy",
+"Let the surprises begin 🎉"],
 
-["So many memories together 📸","So many laughs","So many stories"],
+["Another year older 😄",
+"But still the same crazy friend",
+"And that's perfect 😂"],
 
-["Through every moment","You have been awesome","Stay amazing always"],
+["Remember this moment 📸",
+"A memory worth keeping",
+"Forever in our hearts ❤️"],
 
-["Life is better","With friends like you","Never change ❤️"],
+["Some friendships",
+"Are simply priceless",
+"Like ours 😌"],
 
-["Too many funny moments","Too many selfies","Too many memories"],
+["Life is brighter",
+"When friends like you exist",
+"Stay awesome 🌟"],
 
-["Some friendships","Last forever","Ours definitely will"],
+["Too many selfies",
+"Too many laughs",
+"Too many memories 🤣"],
 
-["Another birthday","Another adventure","More memories ahead"],
+["Adventures with you",
+"Are always the best",
+"More to come 🚀"],
 
-["Keep smiling","Keep shining","Keep being awesome"],
+["Another year",
+"Another chapter",
+"Another amazing story 📖"],
 
-["You deserve","All the happiness","In the world"],
+["Smile big today 😄",
+"Laugh loudly",
+"Enjoy every second"],
 
-["Friends like you","Make life brighter","Every single day"],
+["You deserve",
+"All the happiness",
+"In the world 🌍"],
 
-["Celebrate today","Smile today","Enjoy every moment"],
+["Friends like you",
+"Make life magical",
+"Never change ✨"],
 
-["Never forget","How special you are","To all of us"],
+["Another moment",
+"Another memory",
+"Another smile 😊"],
 
-["Another memory","Another laugh","Another great moment"],
+["Keep dreaming",
+"Keep shining",
+"Keep being YOU ⭐"],
 
-["More adventures","More memories","More happiness"],
+["You are special",
+"More than you know",
+"Always remember that 💙"],
 
-["Final message 🎁","You are an amazing friend","Happy Birthday ❤️"]
+["Almost the final surprise 🎁",
+"Hope you're smiling",
+"Because you deserve it"],
+
+["Final surprise 🎉",
+"You are an amazing friend",
+"HAPPY BIRTHDAY ❤️"]
+
 ];
 
 let slide=0;
 
-function showSlide(){
-
-document.getElementById("photo").style.display="none";
-document.getElementById("msg").style.display="none";
-
-setTimeout(()=>{
+function nextSlide(){
 
 document.getElementById("photo").src=images[slide];
-document.getElementById("photo").style.display="block";
-
-},500);
-
-setTimeout(()=>{
 
 document.getElementById("msg").innerHTML=
 messages[slide].join("<br>");
-document.getElementById("msg").style.display="block";
-
-},2000);
 
 slide++;
 
@@ -142,10 +189,6 @@ slide=0;
 }
 
 }
-
-setInterval(showSlide,6000);
-
-showSlide();
 
 /* balloons */
 
@@ -162,11 +205,13 @@ b.style.background=
 
 document.body.appendChild(b);
 
-setTimeout(()=>{b.remove()},8000);
+setTimeout(()=>{b.remove()},10000);
 
 }
 
-setInterval(balloon,400);
+setInterval(balloon,500);
+
+nextSlide();
 
 </script>
 

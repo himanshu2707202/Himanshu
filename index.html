@@ -3,37 +3,55 @@
 
 <head>
 
-<title>Chotu Surprise</title>
+<title>Birthday Surprise 🎉</title>
 
 <style>
 
 body{
-background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-font-family: Arial;
+margin:0;
+background:#d40000;
+font-family:Arial;
+color:white;
 text-align:center;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+overflow:hidden;
 }
 
 .container{
-position:relative;
+margin-top:60px;
 }
 
 h1{
-cursor:pointer;
-font-size:60px;
+font-size:50px;
+margin-bottom:20px;
 }
 
 img{
-position:absolute;
-top:-150px;
-left:50%;
-transform:translateX(-50%);
-width:250px;
+width:400px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 display:none;
-border-radius:10px;
+}
+
+.message{
+font-size:22px;
+margin-top:20px;
+display:none;
+}
+
+/* balloons */
+
+.balloon{
+position:fixed;
+bottom:-150px;
+width:60px;
+height:80px;
+border-radius:50%;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
 </style>
@@ -44,19 +62,111 @@ border-radius:10px;
 
 <div class="container">
 
-<h1 onclick="showImage()">Chotu</h1>
+<h1 id="title">🎉 Happy Birthday 🎂</h1>
 
-<img id="photo" src="Chotu.png">
+<img id="photo" src="photo1.jpg">
+
+<div class="message" id="msg"></div>
 
 </div>
 
 <script>
 
-function showImage(){
+let images=[
+"photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg",
+"photo5.jpg","photo6.jpg","photo7.jpg","photo8.jpg",
+"photo9.jpg","photo10.jpg","photo11.jpg","photo12.jpg",
+"photo13.jpg","photo14.jpg","photo15.jpg","photo16.jpg"
+];
 
+let messages=[
+["Today is your special day 🎂","Hope it is full of joy","Let the celebration begin 🎉"],
+
+["Another year older 😄","Still the same crazy person","And we love that 😂"],
+
+["So many memories together 📸","So many laughs","So many stories"],
+
+["Through every moment","You have been awesome","Stay amazing always"],
+
+["Life is better","With friends like you","Never change ❤️"],
+
+["Too many funny moments","Too many selfies","Too many memories"],
+
+["Some friendships","Last forever","Ours definitely will"],
+
+["Another birthday","Another adventure","More memories ahead"],
+
+["Keep smiling","Keep shining","Keep being awesome"],
+
+["You deserve","All the happiness","In the world"],
+
+["Friends like you","Make life brighter","Every single day"],
+
+["Celebrate today","Smile today","Enjoy every moment"],
+
+["Never forget","How special you are","To all of us"],
+
+["Another memory","Another laugh","Another great moment"],
+
+["More adventures","More memories","More happiness"],
+
+["Final message 🎁","You are an amazing friend","Happy Birthday ❤️"]
+];
+
+let slide=0;
+
+function showSlide(){
+
+document.getElementById("photo").style.display="none";
+document.getElementById("msg").style.display="none";
+
+setTimeout(()=>{
+
+document.getElementById("photo").src=images[slide];
 document.getElementById("photo").style.display="block";
 
+},500);
+
+setTimeout(()=>{
+
+document.getElementById("msg").innerHTML=
+messages[slide].join("<br>");
+document.getElementById("msg").style.display="block";
+
+},2000);
+
+slide++;
+
+if(slide>=images.length){
+slide=0;
 }
+
+}
+
+setInterval(showSlide,6000);
+
+showSlide();
+
+/* balloons */
+
+function balloon(){
+
+let b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.background=
+"rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
+
+document.body.appendChild(b);
+
+setTimeout(()=>{b.remove()},8000);
+
+}
+
+setInterval(balloon,400);
 
 </script>
 

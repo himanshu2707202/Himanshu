@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <title>Birthday Surprise 🎉</title>
@@ -8,33 +7,16 @@
 <style>
 
 body{
-margin:0;
-background:#c40000;
-font-family:Arial;
+background:#d40000;
 color:white;
 text-align:center;
-overflow:hidden;
-}
-
-.container{
-margin-top:50px;
-}
-
-h1{
-font-size:45px;
+font-family:Arial;
 }
 
 img{
-width:420px;
+width:400px;
 border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-animation:drop 1s ease;
-}
-
-.message{
-font-size:24px;
-margin-top:20px;
-animation:fade 2s;
+margin-top:30px;
 }
 
 button{
@@ -44,38 +26,8 @@ font-size:18px;
 border:none;
 border-radius:10px;
 background:white;
-color:#c40000;
+color:#d40000;
 cursor:pointer;
-}
-
-button:hover{
-transform:scale(1.1);
-}
-
-@keyframes drop{
-0%{transform:translateY(-200px);opacity:0;}
-100%{transform:translateY(0);opacity:1;}
-}
-
-@keyframes fade{
-0%{opacity:0;}
-100%{opacity:1;}
-}
-
-/* balloons */
-
-.balloon{
-position:fixed;
-bottom:-120px;
-width:60px;
-height:80px;
-border-radius:50%;
-animation:float 10s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
 }
 
 </style>
@@ -84,17 +36,13 @@ animation:float 10s linear infinite;
 
 <body>
 
-<div class="container">
+<h1>🎂 Happy Birthday 🎉</h1>
 
-<h1 id="title">🎉 Happy Birthday 🎂</h1>
+<img id="slide" src="photo1.jpg">
 
-<img id="photo" src="photo1.jpg">
+<p id="text">Today is your special day!</p>
 
-<div class="message" id="msg"></div>
-
-<button onclick="nextSlide()">Next Surprise 🎁</button>
-
-</div>
+<button onclick="next()">Next Surprise 🎁</button>
 
 <script>
 
@@ -106,115 +54,40 @@ let images=[
 ];
 
 let messages=[
-
-["Today is YOUR day 🎂",
-"Hope it is filled with joy",
-"Let the surprises begin 🎉"],
-
-["Another year older 😄",
-"But still the same crazy friend",
-"And that's perfect 😂"],
-
-["Remember this moment 📸",
-"A memory worth keeping",
-"Forever in our hearts ❤️"],
-
-["Some friendships",
-"Are simply priceless",
-"Like ours 😌"],
-
-["Life is brighter",
-"When friends like you exist",
-"Stay awesome 🌟"],
-
-["Too many selfies",
-"Too many laughs",
-"Too many memories 🤣"],
-
-["Adventures with you",
-"Are always the best",
-"More to come 🚀"],
-
-["Another year",
-"Another chapter",
-"Another amazing story 📖"],
-
-["Smile big today 😄",
-"Laugh loudly",
-"Enjoy every second"],
-
-["You deserve",
-"All the happiness",
-"In the world 🌍"],
-
-["Friends like you",
-"Make life magical",
-"Never change ✨"],
-
-["Another moment",
-"Another memory",
-"Another smile 😊"],
-
-["Keep dreaming",
-"Keep shining",
-"Keep being YOU ⭐"],
-
-["You are special",
-"More than you know",
-"Always remember that 💙"],
-
-["Almost the final surprise 🎁",
-"Hope you're smiling",
-"Because you deserve it"],
-
-["Final surprise 🎉",
-"You are an amazing friend",
-"HAPPY BIRTHDAY ❤️"]
-
+"Today is your special day 🎂",
+"Another year older 😄",
+"So many memories together 📸",
+"You are an amazing friend ❤️",
+"More adventures ahead 🚀",
+"Stay awesome always 🌟",
+"Friends make life brighter ✨",
+"Keep smiling 😊",
+"You deserve happiness 🌍",
+"Another birthday another memory 🎉",
+"Life is better with friends 💙",
+"More laughs to come 😂",
+"Never stop dreaming ⭐",
+"You are special 💫",
+"Almost the final surprise 🎁",
+"HAPPY BIRTHDAY 🎂"
 ];
 
-let slide=0;
+let i=0;
 
-function nextSlide(){
+function next(){
 
-document.getElementById("photo").src=images[slide];
+i++;
 
-document.getElementById("msg").innerHTML=
-messages[slide].join("<br>");
-
-slide++;
-
-if(slide>=images.length){
-slide=0;
+if(i>=images.length){
+i=0;
 }
 
-}
-
-/* balloons */
-
-function balloon(){
-
-let b=document.createElement("div");
-
-b.className="balloon";
-
-b.style.left=Math.random()*100+"vw";
-
-b.style.background=
-"rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
-
-document.body.appendChild(b);
-
-setTimeout(()=>{b.remove()},10000);
+document.getElementById("slide").src=images[i];
+document.getElementById("text").innerText=messages[i];
 
 }
-
-setInterval(balloon,500);
-
-nextSlide();
 
 </script>
 
 </body>
-
 </html>

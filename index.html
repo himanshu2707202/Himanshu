@@ -3,7 +3,7 @@
 
 <head>
 
-<title>surprise little girl</title>
+<title>For You 💛</title>
 
 <style>
 
@@ -11,68 +11,62 @@ body{
 margin:0;
 font-family:Arial;
 text-align:center;
-color:white;
-background:linear-gradient(#4facfe,#00f2fe);
+background:linear-gradient(#c9f3ff,#ffd6e7);
 overflow:hidden;
-}
-
-h1{
-margin-top:80px;
-font-size:50px;
-}
-
-#tapbox{
-margin-top:40px;
-display:inline-block;
-padding:20px 40px;
-font-size:22px;
-background:white;
 color:#333;
-border-radius:12px;
-cursor:pointer;
-transition:0.3s;
 }
 
-#tapbox:hover{
-transform:scale(1.1);
+.container{
+margin-top:90px;
+padding:20px;
 }
 
-#surprise{
-display:none;
-margin-top:40px;
+.text{
+font-size:24px;
+max-width:700px;
+margin:auto;
+min-height:80px;
 }
 
 img{
-width:350px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
-animation:pop 0.8s ease;
-}
-
-.message{
-font-size:24px;
+width:320px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
 margin-top:20px;
+display:none;
 }
 
-@keyframes pop{
-0%{transform:scale(0)}
-100%{transform:scale(1)}
+.emoji{
+font-size:50px;
+margin-bottom:20px;
 }
 
-/* balloons */
+button{
+margin-top:40px;
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#ff9ac6;
+color:white;
+cursor:pointer;
+}
 
-.balloon{
+button:hover{
+transform:scale(1.1);
+}
+
+/* floating flowers */
+
+.flower{
 position:fixed;
-bottom:-120px;
-width:60px;
-height:80px;
-border-radius:50%;
-animation:float 10s linear infinite;
+font-size:22px;
+animation:fall 9s linear infinite;
 }
 
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+@keyframes fall{
+0%{transform:translateY(-50px)}
+100%{transform:translateY(110vh)}
 }
 
 </style>
@@ -81,54 +75,111 @@ animation:float 10s linear infinite;
 
 <body>
 
-<h1>Ky haal h Chotuuuuuuuuuu</h1>
+<div class="container">
 
-<div id="tapbox" onclick="showSurprise()">
-Tap Me 🎁
+<div class="emoji" id="emoji">🐰</div>
+
+<div class="text" id="text">
+Hey chotuu… I made something small for you 💛
 </div>
 
-<div id="surprise">
+<img id="photu1" src="image1.jpg">
+<img id="photo112" src="image2.jpg">
 
-<img src="photo14.jpg">
+<br>
 
-<div class="message">
-Kam kam gusssa kra kr laldi <br>
-shaaant hojaaao. <br>
-Chotuuuuuuuuuuuuuuu.
-</div>
+<button onclick="nextSlide()">Next ➜</button>
 
 </div>
 
 <script>
 
-function showSurprise(){
+let slide=0;
 
-document.getElementById("tapbox").style.display="none";
+let messages=[
 
-document.getElementById("surprise").style.display="block";
+"Hey chotuu… I made something small for you 💛",
+
+"Chinta mtt kro chotuu i know you are the best beta or aaise sb k sath hota h but holding up things khaskarr past khushi se jayda dukh deta h or aaap aache se jaanti ho ye baaat.",
+
+"",
+
+"You don’t have to carry everything alone.",
+
+"Some days are heavy… and that's okay.",
+
+"You matter more than you realise.",
+
+"I'm always here if you ever need me.",
+
+"Remember what I told you…",
+
+"remember maine ky bola tha aapko to beta stay strong and remember m idhrr he hu jb sahi lage aap krlena baat 💛"
+
+];
+
+let emojis=["🐰","🌸","🐻","⭐","🦋","🐱","🌈","💛","✨"];
+
+function typeText(text){
+
+let i=0;
+let speed=35;
+
+document.getElementById("text").innerHTML="";
+
+function typing(){
+if(i<text.length){
+document.getElementById("text").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,speed);
+}
+}
+
+typing();
 
 }
 
-/* balloons */
+function nextSlide(){
 
-function balloon(){
+slide++;
 
-let b=document.createElement("div");
+if(slide>=messages.length){
+slide=messages.length-1;
+}
 
-b.className="witch";
+typeText(messages[slide]);
 
-b.style.left=Math.random()*100+"vw";
+document.getElementById("emoji").innerText=emojis[slide];
 
-b.style.background=
-"rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")";
+if(slide==2){
+document.getElementById("photo1").style.display="block";
+}
 
-document.body.appendChild(b);
-
-setTimeout(()=>{b.remove()},10000);
+if(slide==8){
+document.getElementById("photo2").style.display="block";
+}
 
 }
 
-setInterval(witch,500);
+/* floating flowers */
+
+function flower(){
+
+let f=document.createElement("div");
+
+f.className="flower";
+
+f.style.left=Math.random()*100+"vw";
+
+f.innerHTML="🌸";
+
+document.body.appendChild(f);
+
+setTimeout(()=>{f.remove()},9000);
+
+}
+
+setInterval(flower,700);
 
 </script>
 

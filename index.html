@@ -33,7 +33,6 @@ width:320px;
 border-radius:12px;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 margin-top:20px;
-display:none;
 }
 
 .emoji{
@@ -55,8 +54,6 @@ cursor:pointer;
 button:hover{
 transform:scale(1.1);
 }
-
-/* floating flowers */
 
 .flower{
 position:fixed;
@@ -83,8 +80,7 @@ animation:fall 9s linear infinite;
 Hey chotuu… I made something small for you 💛
 </div>
 
-<img id="photu1" src="image1.jpg">
-<img id="photo112" src="image2.jpg">
+<img id="photo" src="hug.jpg">
 
 <br>
 
@@ -102,8 +98,6 @@ let messages=[
 
 "Chinta mtt kro chotuu i know you are the best beta or aaise sb k sath hota h but holding up things khaskarr past khushi se jayda dukh deta h or aaap aache se jaanti ho ye baaat.",
 
-"",
-
 "You don’t have to carry everything alone.",
 
 "Some days are heavy… and that's okay.",
@@ -112,13 +106,13 @@ let messages=[
 
 "I'm always here if you ever need me.",
 
-"Remember what I told you…",
+"Remember maine ky bola tha aapko…",
 
 "remember maine ky bola tha aapko to beta stay strong and remember m idhrr he hu jb sahi lage aap krlena baat 💛"
 
 ];
 
-let emojis=["🐰","🌸","🐻","⭐","🦋","🐱","🌈","💛","✨"];
+let emojis=["🐰","🌸","🐻","⭐","🦋","🐱","🌈","💛"];
 
 function typeText(text){
 
@@ -151,17 +145,13 @@ typeText(messages[slide]);
 
 document.getElementById("emoji").innerText=emojis[slide];
 
-if(slide==2){
-document.getElementById("photo1").style.display="block";
-}
+/* change image at the "remember" slide */
 
-if(slide==8){
-document.getElementById("photo2").style.display="block";
+if(slide==6){
+document.getElementById("photo").src="motivation.jpg";
 }
 
 }
-
-/* floating flowers */
 
 function flower(){
 

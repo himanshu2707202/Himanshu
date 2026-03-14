@@ -25,7 +25,7 @@ padding:20px;
 font-size:24px;
 max-width:700px;
 margin:auto;
-min-height:90px;
+min-height:100px;
 }
 
 img{
@@ -55,12 +55,12 @@ button:hover{
 transform:scale(1.1);
 }
 
-/* falling flowers */
+/* flowers */
 
 .flower{
 position:fixed;
 font-size:22px;
-animation:fall 9s linear infinite;
+animation:fall 8s linear infinite;
 }
 
 @keyframes fall{
@@ -124,10 +124,10 @@ if(slide>=messages.length){
 slide=messages.length-1;
 }
 
-document.getElementById("text").innerText=messages[slide];
-document.getElementById("emoji").innerText=emojis[slide];
+document.getElementById("text").innerText = messages[slide];
+document.getElementById("emoji").innerText = emojis[slide];
 
-/* change image at the remember message */
+/* change image when remember message comes */
 
 if(slide==6){
 document.getElementById("photo").src="motivation.jpg";
@@ -149,7 +149,7 @@ f.innerHTML="🌸";
 
 document.body.appendChild(f);
 
-setTimeout(()=>{f.remove()},9000);
+setTimeout(()=>{f.remove()},8000);
 
 }
 
@@ -159,4 +159,4 @@ setInterval(flower,700);
 
 </body>
 
-</html>
+</html>	
